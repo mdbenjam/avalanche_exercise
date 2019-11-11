@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  frontend:
+    build: ./frontend
+    command: sh -c "yarn && yarn start"
+    volumes:
+      - ./frontend:/code
+    ports:
+      - "5000:5000"
+  selenium:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - 4444:4444   # Selenium
+      - 5900:5900   # VNC server
+    depends_on:
+      - web
+      - frontend
+  web:
+    build: .
+    stdin_open: true
+    tty: true
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    depends_on:
+      - db
+      - frontend
