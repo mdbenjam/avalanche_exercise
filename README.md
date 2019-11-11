@@ -68,7 +68,7 @@ We've dockerized this exercise to make setup as painless as possible. Make sure 
 and [docker-compose](https://docs.docker.com/compose/install/) installed.
 
 Now, clone this repository and in the root directory run `docker-compose build` and then
-`docker-compose up`. Building might take a few minutes as it gathers all the needed dependencies.
+`docker-compose up`. Building might take a few minutes as it gathers all the needed dependencies. The first time you launch the containers it will also take some time to download all the JS packages.
 Once up, you'll need to run: `docker-compose run web python manage.py migrate`
 Then you can access the server at `localhost:8000`. The webpack bundle is served
 from a development server meaning building the frontend should be fast, and hot module
@@ -78,10 +78,10 @@ To stop the containers, type `ctrl + c`
 
 You can seed the database by running `docker-compose run web python manage.py seed`
 
-You shouldn't need to installing additional dependencies, but if you really want to, you can:
+You shouldn't need to install additional dependencies, but if you really want to, you can.
 
 ## JavaScript dependencies
-Run `docker-compose exec yarn add <dependency name>`
+Run `docker-compose exec frontend yarn add <dependency name>`
 
 ## Python dependencies
 Add the dependency to the `requirements.txt` file, then re-build the image:
@@ -106,7 +106,10 @@ You are welcome to write other tests if you would like, but you do not have to.
 
 # Resources
 
-[React quick start guide](https://reactjs.org/docs/hello-world.html).
+[React quick start guide](https://reactjs.org/docs/hello-world.html)
+
 [Django tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/)
+
 [MUI Docs](https://material-ui.com/)
+
 [Django Rest Framework](https://www.django-rest-framework.org/api-guide/serializers/#serializers)
