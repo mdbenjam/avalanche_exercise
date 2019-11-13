@@ -18,3 +18,11 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['pk', 'name', 'data']
+
+class CompanySerializer(serializers.ModelSerializer):
+    projects = ProjectSerializer(many=True)
+    profiles = ProfileSerializer(many=True)
+
+    class Meta:
+        model = Company
+        fields = ['pk', 'name', 'projects', 'profiles']

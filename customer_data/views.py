@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .serializers import UserSerializer, ProfileSerializer, ProjectSerializer
+from .serializers import UserSerializer, CompanySerializer, ProfileSerializer, ProjectSerializer
 from .models import User, Company, Profile, Project
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -8,6 +8,13 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+
+class CompanyViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
 
 class ProfileViewSet(viewsets.ModelViewSet):
     """
