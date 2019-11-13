@@ -23,6 +23,11 @@ We want you to use any resources you'd normally use in your work.
 
 # Goals
 
+This section has a high-level description of the changes you're being asked to make to the
+project, but to understand exactly what you'll be graded on, we recommend you 
+consult `customer_data/tests.py` directly. This contains all of the automated
+tests that will be evaluated when checking your solution.
+
 At Avalanche we're building out systems to help us provide insights to our clients.
 Currently, we're building internal tools for our team to quickly access the information
 they need for each project we work on. The app allows our team to view each project we work on.
@@ -65,7 +70,7 @@ but now that you've implemented the company page, we have a place to include it.
 # Setup
 
 We've dockerized this exercise to make setup as painless as possible. Make sure you have [docker](https://docs.docker.com/get-started/#install-docker-desktop)
-and [docker-compose](https://docs.docker.com/compose/install/) installed.
+and [docker-compose](https://docs.docker.com/compose/install/) installed, AND updated to the most recent version. If you get an error, make sure docker is running before you use these commands. ([Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-mac) is an easy way to do this.)
 
 Now, clone this repository and in the root directory run `docker-compose build` and then
 `docker-compose up`. Building might take a few minutes as it gathers all the needed dependencies. The first time you launch the containers it will also take some time to download all the JS packages.
@@ -95,7 +100,9 @@ care that the functionality is there. To run the tests open a terminal window an
 `docker-compose run web python manage.py test customer_data.tests.CustomerDataTests`.
 This will run the tests in a selenium docker container that is running. To watch the
 tests you can install [VNC](https://www.realvnc.com/en/connect/download/viewer/) and
-connect to `0.0.0.0:5900`. This can be useful when debugging as you can put a breakpoint
+connect to `0.0.0.0:5900`. When VNC asks you for a password (but no username) to 
+Authenticate to VNC Server, use the password "secret" (which is not our idea).
+This can be useful when debugging as you can put a breakpoint
 in a test to see where it's failing. Go to the `customer_data/tests.py` file and
 add a `pdb.set_trace()` wherever you'd like the test to stop.
 
