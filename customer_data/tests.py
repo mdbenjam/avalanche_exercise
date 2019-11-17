@@ -122,6 +122,17 @@ class CustomerDataTests(StaticLiveServerTestCase):
         self.find_by_text('Year 1')
         self.find_by_text('Importer Chart')
 
+    def test_user_assignment_no_refresh(self):
+        self.buildRecords()
+        self.selenium.get(self.live_server_url)
+        self.click_by_text('Show Companies')
+        self.click_by_text('Gobias Industries')
+        self.element_find_by_text('Tobias Funke', 'li')
+        self.selenium.find_element_by_id("select-user").click()
+        self.click_by_text('GOB Bluth')
+        self.element_click_by_text('Add', 'button')
+        self.element_find_by_text('GOB Bluth', 'li')
+
     def test_user_assignment(self):
         self.buildRecords()
         self.selenium.get(self.live_server_url)

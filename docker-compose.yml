@@ -15,9 +15,6 @@ services:
     ports:
       - 4444:4444   # Selenium
       - 5900:5900   # VNC server
-    depends_on:
-      - web
-      - frontend
   web:
     build: .
     stdin_open: true
@@ -31,3 +28,4 @@ services:
     depends_on:
       - db
       - frontend
+      - selenium
