@@ -3,8 +3,10 @@ import pdb
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.test import override_settings, tag
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import Select, WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from .models import *
 from random import randint
 
@@ -130,6 +132,9 @@ class CustomerDataTests(StaticLiveServerTestCase):
         self.element_find_by_text('Tobias Funke', 'li')
         self.selenium.find_element_by_id("select-user").click()
         self.click_by_text('GOB Bluth')
+        WebDriverWait(self.selenium, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[contains(string(), 'Add')]"))
+        )
         self.element_click_by_text('Add', 'button')
         self.element_find_by_text('GOB Bluth', 'li')
 
@@ -141,6 +146,9 @@ class CustomerDataTests(StaticLiveServerTestCase):
         self.element_find_by_text('Tobias Funke', 'li')
         self.selenium.find_element_by_id("select-user").click()
         self.click_by_text('GOB Bluth')
+        WebDriverWait(self.selenium, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[contains(string(), 'Add')]"))
+        )
         self.element_click_by_text('Add', 'button')
         self.element_find_by_text('GOB Bluth', 'li')
 
