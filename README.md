@@ -7,15 +7,15 @@ how to get setup, and some resources to help you along.
 # Guidelines
 
 We want to be respectful of your time, and we want to give everyone a fair shot, so
-we're asking everyone to limit their time on the exercise to 2 hours. We don't expect
+we're asking everyone to limit their time on the exercise to 4 hours. We don't expect
 you to finish everything in that time. If you do, that's great! But don't worry if
 you don't get to everything. There's a lot here, and getting used to a code base
-in 2 hours is a lot to ask. Please get as far as you can, but keep to the time frame.
+in 4 hours is a lot to ask. Please get as far as you can, but keep to the time frame.
 
 There is one exception to the time frame. Because the exercise is written in Django/Python
-(backend) and React (frontend), feel free to add up to 30 minutes for each technology
-you're not familiar with. i.e. if you don't know Django and React add 1 hour to the
-2 hour time limit. That said, the goal of the exercise is to assess your engineering
+(backend) and React (frontend), feel free to add up to an hour for each technology
+you're not familiar with. i.e. if you don't know Django OR React, add 2 hours to the
+4 hour time limit. That said, the goal of the exercise is to assess your engineering
 skills, not to see how well you know the Django framework. We've tried to design it
 in a way that you can get by without knowing all aspects of the technologies we use.
 Using stack overflow, tutorials, copying code from within the project are all fair game.
