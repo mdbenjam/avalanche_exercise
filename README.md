@@ -6,13 +6,12 @@ how to get setup, and some resources to help you along.
 
 # Guidelines
 
-We want to be respectful of your time, and we want to give everyone a fair shot, so
+We want to be respectful of your time, so
 we're asking everyone to limit their time on the exercise to 2 hours. We don't expect
-you to finish everything in that time. If you do, that's great! But don't worry if
-you don't get to everything. There's a lot here, and getting used to a code base
-in 2 hours is a lot to ask. Please get as far as you can, but keep to the time frame.
+you to finish everything in that time. If you do, that's great, but don't worry if
+you don't. Please get as far as you can, but keep to the time frame.
 
-There is one exception to the time frame. Because the exercise is written in Django/Python
+Because the exercise is written in Django/Python
 (backend) and React (frontend), feel free to add up to 30 minutes for each technology
 you're not familiar with. i.e. if you don't know Django and React add 1 hour to the
 2 hour time limit. That said, the goal of the exercise is to assess your engineering
@@ -34,9 +33,11 @@ they need for each project we work on. The app allows our team to view each proj
 
 ![](readme_images/ProjectsView.png)
 
-However, the product team has requested that
+## Companies View
+
+The product team has requested that
 we provide better organization as we grow. Instead of a single page with all the projects
-listed, the team wants to be able to view projects by company:
+listed, the team wants to be able to view projects by company. Clicking on the "Show Companies" button will switch to the company view. Currently it has just a text placeholder, but we want you to make it look like this:
 
 ![](readme_images/CompaniesView.png)
 
@@ -45,14 +46,16 @@ The menu of projects should function just like the existing projects page does,
 where clicking on a project brings up the relevant chart for the project.
 
 Places to get started:
-- We need to add an endpoint to load companies. Check out the `customer_data/serializers.py` file.
-We use the [Django Rest Framework](https://www.django-rest-framework.org/api-guide/serializers/#serializers). Check how we call the projects endpoint in `frontend/src/App.jsx`
 - We need to add the UI. Checkout the `frontend/src/components/Companies.jsx` file.
 Look to the Projects component at `frontend/src/components/Projects.jsx` for inspiration.
+- We need to hook the UI up to our companies API. The companies index endpoint is at `customer_data/companies`, look at how we make requests in `frontend/src/App.jsx` for inspiration.
+- You should reuse the projects component on this page.
+- This feature is exercised in the `test_companies` test. `docker-compose run web python manage.py test customer_data.tests.CustomerDataTests.test_companies` runs just this test.
 
-After building the company page, we want to build out associations between the user profile model
-and companies that enable us to associate a user with a company. This will allow us
-to give users access to their companies data in the future.
+## User Admin
+
+In preperation of releasing our project views externally, we need to build a view where an admin can associate a user with a company. We have an association between the user profile model
+and company model that enables us to assign users a company.
 
 We need to add a Select menu where a user can associate any user profile in the database
 with the relevant company. When a user clicks on the Add button, the user profile should
@@ -63,9 +66,13 @@ be associated in the database and the UI should be updated.
 Places to get started:
 - We need to add an endpoint to update user profiles. Check out the `customer_data/serializers.py` file.
 We use [Django Rest Framework](https://www.django-rest-framework.org/api-guide/serializers/#serializers).
-- We need to add the UI. Checkout the `frontend/src/components/Users.jsx` file. It's not included anywhere,
-but now that you've implemented the company page, we have a place to include it. Use MUI components
+- We need to add the UI. Checkout the `frontend/src/components/Users.jsx` file. It's not rendered anywhere,
+but now that you've implemented the company page, we have a place to render it. Use MUI components
 [Selects](https://material-ui.com/components/selects/) and [Buttons](https://material-ui.com/components/buttons/)
+- Hint: if you're having trouble getting the update endpoint to work, you can focus on just building the UI. Adding a user could add it to the page locally but not fire an AJAX request to update it on the backend. This is a good first step! You can test this functionality in `test_user_assignment_no_refresh` by running `docker-compose run web python manage.py test customer_data.tests.CustomerDataTests.test_user_assignment_no_refresh`
+- Some of the more complex tests deal with edge case scenarios. Think of solving these as extra credit:
+  - `test_can_change_user_assignment`: ensures that adding a user to one company removes them from whatever company they were assigned to before.
+  - `test_user_assignment_dropdown_only_has_available_users`: ensures that the select dropdown only has users that aren't already part of this company.
 
 # Setup
 
@@ -94,7 +101,7 @@ Add the dependency to the `requirements.txt` file, then re-build the image:
 
 # Tests
 
-The setup comes with tests to check your work. These are selenium (browser tests)
+The setup comes with tests (`customer_data/tests`) to check your work. These are selenium (browser tests)
 because we don't want to be prescriptive in how you approach the problem. We only
 care that the functionality is there. To run the tests open a terminal window and run:
 `docker-compose run web python manage.py test customer_data.tests.CustomerDataTests`.
