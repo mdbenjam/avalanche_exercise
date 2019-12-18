@@ -4,6 +4,12 @@ Hello! Thank you for taking the time to work through this take home exercise. In
 README we will set out the guidelines we want you to follow, the goals of the exercise,
 how to get setup, and some resources to help you along.
 
+# Submission
+
+When you're done with the exercise, please remove the `frontend/node_modules` directory, zip the remaining files, and send an email to mark [at] avalanchestrategy [dot] com. Please include `Engineering Takehome Submission` as the subject. You can either attach the zip file, or send a link to a hosted version (i.e. a Google Drive or Dropbox link).
+
+Please do not fork this repository. While that would certainly be the most convenient way to go about sharing code, we want everyone to have a fair opportunity, and don't want future candidates to see potential solutions.
+
 # Guidelines
 
 We want to be respectful of your time, so
