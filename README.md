@@ -33,6 +33,13 @@ project, but to understand exactly what you'll be graded on, we recommend you
 consult `customer_data/tests.py` directly. This contains all of the automated
 tests that will be evaluated when checking your solution.
 
+## Tasks, in order of complexity (WORK IN PROGRESS)
+- Easy Django things?
+- Get the Companies.jsx page to work
+- Get the Profiles.jsx page to work
+- Get updates to the Profiles page to work? To Companies? Etc.
+
+
 At Avalanche we're building out systems to help us provide insights to our clients.
 Currently, we're building internal tools for our team to quickly access the information
 they need for each project we work on. The app allows our team to view each project we work on.
@@ -109,12 +116,15 @@ Add the dependency to the `requirements.txt` file, then re-build the image:
 
 The setup comes with tests (`customer_data/tests`) to check your work. These are selenium (browser tests)
 because we don't want to be prescriptive in how you approach the problem. We only
-care that the functionality is there. To run the tests open a terminal window and run:
+care that the functionality is there. To run the tests open a _separate_ terminal window
+(in other words, do _not_ shut down the running website) and run:
 `docker-compose run web python manage.py test customer_data.tests.CustomerDataTests`.
-This will run the tests in a selenium docker container that is running. To watch the
+This will run the tests in a separate selenium docker container. To watch the
 tests you can install [VNC](https://www.realvnc.com/en/connect/download/viewer/) and
-connect to `0.0.0.0:5900`. When VNC asks you for a password (but no username) to 
-Authenticate to VNC Server, use the password "secret" (which is not our idea).
+connect to `0.0.0.0:5900`. You will need to sign up for a free VNC account, and 
+log in to the software, or else you will get an unhelpful error message.
+Then, when VNC asks you for a password (but no username) to 
+Authenticate to VNC Server, use the password "secret". (We did not choose this password.)
 This can be useful when debugging as you can put a breakpoint
 in a test to see where it's failing. Go to the `customer_data/tests.py` file and
 add a `pdb.set_trace()` wherever you'd like the test to stop.
